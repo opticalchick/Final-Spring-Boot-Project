@@ -4,8 +4,5 @@ spring:
     password: activities
     url: jdbc:mysql://localhost:3306/activities
     
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
+
       
