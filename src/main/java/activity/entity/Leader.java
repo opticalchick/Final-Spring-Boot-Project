@@ -1,4 +1,4 @@
-package activities.entity;
+package activity.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

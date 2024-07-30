@@ -1,4 +1,4 @@
-package activities.entity;
+package activity.entity;
 
 import java.util.HashSet;
 import java.util.Set;

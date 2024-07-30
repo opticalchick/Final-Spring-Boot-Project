@@ -1,4 +1,4 @@
-package activities.entity;
+package activity.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +29,7 @@ public class Activity {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	//This creates the many-to-many relationship between stores and customers
+	//This creates the many-to-many relationship between activities and participants
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	
 	//This gives the join table name and columns on which to join
@@ -39,7 +39,7 @@ public class Activity {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	//This creates the one-to-many relationship between store and employees
+	//This creates the one-to-many relationship between activity and leaders
 	@OneToMany(mappedBy = "activity", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Leader> leaders = new HashSet<>();
 	
