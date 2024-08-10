@@ -4,5 +4,7 @@ spring:
     password: activities
     url: jdbc:mysql://localhost:3306/activities
     
+ 
+    
 
       
