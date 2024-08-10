@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
-import activity.controller.model.ActivityData;
 import activity.controller.model.ActivityData.ActivityParticipant;
 import activity.controller.model.ActivityData.ActivityLeader;
 import activity.service.ActivityService;
@@ -67,9 +66,32 @@ public class ActivityController {
 	}
 	
 	@GetMapping("/{activityId}")
-	public ActivityData retrieveActivityById(@PathVariable Long activityID) {
+	public ActivityData retrieveActivityById(@PathVariable Long activityId) {
 		log.info("Retrieving activity with ID: {}", activityId);
 		return activityService.retrieveActivityById(activityId);
+	}
+	
+	@GetMapping("/{activityId}/leadersandparticipants")
+	public List<ActivityData> retrieveActivityWithParticipantsAndLeaders (@PathVariable Long activityId) {
+		log.info("Retrieving activity with ID: {}, leaders, and participants", activityId);
+		return activityService.retrieveActivityWithParticipantsAndLeaders(activityId);
+	}
+	
+	@PutMapping("/{activityId}/{leaderId}")
+	public ActivityLeader updateLeader(@PathVariable Long activityId, @PathVariable Long leaderId, 
+			@RequestBody ActivityLeader activityLeader) {
+		activityLeader.setLeaderId(leaderId);
+		log.info("Updating leader with ID: {}", leaderId);
+		return activityService.saveLeader(activityId, activityLeader);
+		
+	}
+	
+	@PutMapping("/{activityId}/{participantId}")
+	public ActivityParticipant updateParticipant(@PathVariable Long activityId, @PathVariable Long participantId, 
+			@RequestBody ActivityParticipant activityParticipant) {
+		activityParticipant.setParticipantId(participantId);
+		log.info("Updating participant with ID: {}", participantId);
+		return activityService.saveParticipant(activityId, activityParticipant);
 	}
 	
 	@DeleteMapping("/{activityId}")
@@ -86,6 +108,6 @@ public class ActivityController {
 
 
 
-
+ 
 
 
