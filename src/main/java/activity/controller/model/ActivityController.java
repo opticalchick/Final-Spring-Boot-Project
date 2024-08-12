@@ -77,7 +77,7 @@ public class ActivityController {
 		return activityService.retrieveActivityWithParticipantsAndLeaders(activityId);
 	}
 	
-	@PutMapping("/{activityId}/{leaderId}")
+	@PutMapping("/{activityId}/{leaderId}/leader")
 	public ActivityLeader updateLeader(@PathVariable Long activityId, @PathVariable Long leaderId, 
 			@RequestBody ActivityLeader activityLeader) {
 		activityLeader.setLeaderId(leaderId);
@@ -86,7 +86,7 @@ public class ActivityController {
 		
 	}
 	
-	@PutMapping("/{activityId}/{participantId}")
+	@PutMapping("/{activityId}/{participantId}/participant")
 	public ActivityParticipant updateParticipant(@PathVariable Long activityId, @PathVariable Long participantId, 
 			@RequestBody ActivityParticipant activityParticipant) {
 		activityParticipant.setParticipantId(participantId);
